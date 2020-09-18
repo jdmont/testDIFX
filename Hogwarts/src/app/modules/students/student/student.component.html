@@ -1,0 +1,38 @@
+<div class="body">
+    <div class="">
+
+        <h1>Students</h1>
+
+        <div class="add-button">
+            <button mat-mini-fab color="primary" routerLink='/students/create'>
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="patronus">
+            <th mat-header-cell *matHeaderCellDef> Patronus </th>
+            <td mat-cell *matCellDef="let element"> {{element.patronus}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="age">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Age </th>
+            <td mat-cell *matCellDef="let element"> {{CalculateAge(element.dateOfBirth)}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef> Image </th>
+            <td mat-cell *matCellDef="let element"><img src='{{element.image}}' width="200px"> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

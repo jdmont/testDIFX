@@ -1,0 +1,59 @@
+<h1>Register student</h1>
+<div [formGroup]="form" class="form" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+    <div class="form-content">
+
+        <mat-form-field class="form-control-item">
+            <mat-label>Name: </mat-label>
+            <input matInput formControlName="name" matInput placeholder="Name">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Birth date:</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="birthDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <br>
+        <mat-form-field class="form-control-item">
+            <mat-label>Patronus: </mat-label>
+            <input matInput formControlName="patronus" matInput placeholder="Patronus">
+        </mat-form-field>
+
+        <br>        
+        <span style="color:red;" *ngIf="message">{{message}}</span>
+        <button type="button" mat-raised-button (click)="file.click()">Choose image file</button>
+        <input hidden  #file type="file" accept='image/*' (change)="preview(file.files)" type="file" id="file">
+        <br>
+        <img [src]="imgURL" height="150" *ngIf="imgURL">         
+        <br>
+
+        <button mat-raised-button (click)="save()">Save</button>
+    </div>
+
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="patronus">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Patronus </th>
+        <td mat-cell *matCellDef="let element"> {{element.patronus}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of birth </th>
+        <td mat-cell *matCellDef="let element"> {{element.dateOfBirth| date :'shortDate'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> Image </th>
+        <td mat-cell *matCellDef="let element"><img src='{{element.image}}' width="200px"> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
