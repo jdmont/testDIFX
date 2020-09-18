@@ -1,7 +1,7 @@
 /**
  * Character info
  */
-export class Character {
+export interface Character {
     name: string;
     patronus: string;
     dateOfBirth: Date;

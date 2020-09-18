@@ -10,3 +10,6 @@ table {
       background-image: url('src/assets/images/classroom.jpg');
       background-color: black;
   }
+  .add-button{
+    text-align: end;
+  }
