@@ -12,7 +12,7 @@ import { Character } from 'src/app/models/character';
 export class CreateStudentComponent implements OnInit {
 
   /**
-   * Filter form group
+   * Data form group
    */
   form: FormGroup;
 
@@ -20,10 +20,17 @@ export class CreateStudentComponent implements OnInit {
    * List of new students
    */
   newStudents: Character[] = [];
-
+  /**
+   * Datasource to show and table order
+   */
   dataSource = null;
-
+  /**
+   * Columns to display in table
+   */
   displayedColumns: string[] = ['name', 'age', 'patronus', 'image'];
+
+  public imagePath: any;
+  imgURL: any;
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -38,11 +45,12 @@ export class CreateStudentComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  public imagePath;
-  imgURL: any;
-  public message: string;
 
-  preview(files) {
+  /**
+   * Previews the loaded image
+   * @param files file selected
+   */
+  preview(files: string | any[]) {
     if (files.length === 0) {
       return;
     }
@@ -53,16 +61,26 @@ export class CreateStudentComponent implements OnInit {
       this.imgURL = reader.result;
     };
   }
+  /**
+   * Loads the given data in the table
+   */
   save() {
-    const newCharacter: Character = {
-      name: this.form.get('name').value,
-      patronus: this.form.get('patronus').value,
-      dateOfBirth: this.form.get('birthDate').value,
-      image: this.imgURL
-    };
-    this.newStudents.push(newCharacter);
-    this.dataSource = new MatTableDataSource<Character>(this.newStudents);
-    this.dataSource.sort = this.sort;
+    this.form.markAsPristine();
+    this.form.markAsUntouched();
+    if (this.form.valid) {
+
+      const newCharacter: Character = {
+        name: this.form.get('name').value,
+        patronus: this.form.get('patronus').value,
+        dateOfBirth: this.form.get('birthDate').value,
+        image: this.imgURL
+      };
+      this.newStudents.push(newCharacter);
+      this.dataSource = new MatTableDataSource<Character>(this.newStudents);
+      this.dataSource.sort = this.sort;
+      this.form.reset();
+      this.imgURL = '';
+    }
   }
 
 }

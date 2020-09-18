@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  URL_SERVICE: 'http://hp-api.herokuapp.com/api/characters'
+  URL_SERVICE: 'https://hp-api.herokuapp.com/api/characters'
 };
 
 /*
