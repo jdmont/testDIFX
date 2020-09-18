@@ -20,8 +20,7 @@
             <input matInput formControlName="patronus" matInput placeholder="Patronus">
         </mat-form-field>
 
-        <br>        
-        <span style="color:red;" *ngIf="message">{{message}}</span>
+        <br>                
         <button type="button" mat-raised-button (click)="file.click()">Choose image file</button>
         <input hidden  #file type="file" accept='image/*' (change)="preview(file.files)" type="file" id="file">
         <br>
@@ -29,6 +28,7 @@
         <br>
 
         <button mat-raised-button (click)="save()">Save</button>
+        <br><br>
     </div>
 
 </div>

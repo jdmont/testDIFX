@@ -2,12 +2,14 @@
 
 <mat-form-field appearance="fill" class="">
   <mat-label>Choose one House</mat-label>
-  <mat-select [formControl]="selected" (selectionChange)="onEditClick($event.value)">
-    <mat-option>Clear</mat-option>
-    <mat-option value="slytherin">Slytherin</mat-option>
+  <mat-select [formControl]="selected" (selectionChange)="onEditClick($event.value)">    
+
+    <mat-option *ngFor="let house of enumKeys"   [value]="house">{{house}}</mat-option>
+
+    <!-- <mat-option value="slytherin">Slytherin</mat-option>
     <mat-option value="gryffindor">Gryffindor</mat-option>
     <mat-option value="ravenclaw">Ravenclaw</mat-option>
-    <mat-option value="hufflepuff">Hufflepuff</mat-option>
+    <mat-option value="hufflepuff">Hufflepuff</mat-option> -->
   </mat-select>
   <mat-error *ngIf="selected.hasError('required')">You must select a House</mat-error>
   <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">

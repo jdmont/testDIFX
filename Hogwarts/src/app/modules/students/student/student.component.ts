@@ -12,11 +12,17 @@ import { StudentsService } from 'src/app/services/students.service';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-
+  /**
+   * List of characters to show
+   */
   charactersList: Character[] = [];
-
+  /**
+   * datasource to show and table order
+   */
   dataSource = null;
-
+  /**
+   * Columns to display in table
+   */
   displayedColumns: string[] = ['name', 'age', 'patronus', 'image'];
 
 
@@ -26,11 +32,11 @@ export class StudentComponent implements OnInit {
 
   ngOnInit() {
     this.studentsService.getCharacters().subscribe(res => {
-        this.charactersList = res;
-        this.dataSource = new MatTableDataSource<Character>(this.charactersList);
-        this.dataSource.sort = this.sort;
+      this.charactersList = res;
+      this.dataSource = new MatTableDataSource<Character>(this.charactersList);
+      this.dataSource.sort = this.sort;
     }, error => {
-        console.error(error);
+      console.error(error);
     });
   }
   CalculateAge(dateOfBirth: Date): string {

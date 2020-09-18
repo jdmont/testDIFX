@@ -11,11 +11,17 @@ import { TeacherService } from 'src/app/services/teacher.service';
   styleUrls: ['./teacher.component.css']
 })
 export class TeacherComponent implements OnInit {
-
+/**
+ * List of characters to show
+ */
   charactersList: Character[] = [];
-
+/**
+ * datasource to show and table order
+ */
   dataSource = null;
-
+/**
+ * Columns to display in table
+ */
   displayedColumns: string[] = ['name', 'age', 'patronus', 'image'];
 
 

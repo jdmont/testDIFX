@@ -1,6 +1,6 @@
 export enum Houses {
-    slytherin,
-    gryffindor,
-    ravenclaw,
-     hufflepuff
+    slytherin = 'slytherin',
+    gryffindor= 'gryffindor',
+    ravenclaw= 'ravenclaw',
+    hufflepuff= 'hufflepuff',
 }
