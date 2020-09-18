@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { CharactersComponent } from './characters/characters.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatSelectModule } from '@angular/material/select';
-import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
+
+import { CharacterRoutingModule } from './character-routing.module';
+
 // Services
 import { CharacterService } from 'src/app/services/character.service';
 
@@ -13,11 +13,8 @@ import { CharacterService } from 'src/app/services/character.service';
   declarations: [CharactersComponent],
   imports: [
     CommonModule,
-    SharedModule,
-    MatSelectModule,
-    MatTableModule,
-    MatSortModule
-
+    SharedModule, 
+    CharacterRoutingModule
   ],
   providers: [
     CharacterService

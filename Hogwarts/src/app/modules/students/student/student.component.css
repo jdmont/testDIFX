@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  .body{
+      background-image: url('src/assets/images/classroom.jpg');
+      background-color: black;
+  }

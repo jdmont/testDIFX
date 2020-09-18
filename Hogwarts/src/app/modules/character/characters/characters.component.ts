@@ -27,15 +27,7 @@ export class CharactersComponent {
     constructor(private charactersService: CharacterService) {
     }
     
-    ngOnInit() {
-        this.charactersService.getCharacters('slytherin').subscribe(res => {
-            this.charactersList = res;
-            this.dataSource = new MatTableDataSource<Character>(this.charactersList);
-            this.dataSource.sort = this.sort;
-        }, error => {
-            console.error(error);
-        });
-    }
+    
     onEditClick(house: string) {
         this.charactersService.getCharacters(house).subscribe(res => {
             this.charactersList = res;

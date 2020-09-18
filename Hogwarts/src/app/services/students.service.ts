@@ -7,12 +7,10 @@ import { Character } from '../models/character';
 @Injectable({
   providedIn: 'root'
 })
-export class CharacterService {
-
+export class StudentsService {
   constructor(private http: HttpClient) { }
-
-  getCharacters(house: string): Observable<Character[]> {
-    const urlService = `${environment.URL_SERVICE}/house/${house}`;
+  getCharacters(): Observable<Character[]> {
+    const urlService = `${environment.URL_SERVICE}/students`;
     return this.http.get<Character[]>(urlService);
   }
 

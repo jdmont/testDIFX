@@ -1,15 +1,15 @@
 
 <mat-toolbar>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" [matMenuTriggerFor]="aboveMenu">
+  <button mat-icon-button class="" aria-label="" [matMenuTriggerFor]="aboveMenu">
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #aboveMenu="matMenu" yPosition="above">
-    <button mat-menu-item>Characters</button>
-    <button mat-menu-item>Teachers</button>
-    <button mat-menu-item>Students</button>
+    <button mat-menu-item routerLink='/characters' >Characters</button>
+    <button mat-menu-item routerLink='/teachers'>Teachers</button>
+    <button mat-menu-item routerLink='/students'>Students</button>
   </mat-menu>
-  <span>{{ title }} </span>
+  <span routerLink=''>{{ title }} </span>
 </mat-toolbar>
-<app-characters></app-characters>
+<router-outlet></router-outlet>
 
   

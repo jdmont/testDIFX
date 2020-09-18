@@ -1,0 +1,20 @@
+<h1>Register student</h1>
+<div [formGroup]="form" class="filter-container" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column">
+    <mat-form-field class="form-control-item">
+        <mat-label>Name: </mat-label>
+        <input matInput formControlName="name" matInput placeholder="Name">
+    </mat-form-field>
+    <br>
+
+    <!-- <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field> -->
+
+    <br>
+    <mat-form-field class="form-control-item">
+        <mat-label>Patronus: </mat-label>
+        <input matInput formControlName="patronus" matInput placeholder="Patronus">
+    </mat-form-field>
+</div>
