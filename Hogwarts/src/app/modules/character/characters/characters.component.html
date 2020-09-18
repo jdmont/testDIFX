@@ -1,0 +1,47 @@
+<h1>Characters</h1>
+
+<mat-form-field appearance="fill" class="">
+  <mat-label>Choose one House</mat-label>
+  <mat-select [formControl]="selected" (selectionChange)="onEditClick($event.value)">
+    <mat-option>Clear</mat-option>
+    <mat-option value="slytherin">Slytherin</mat-option>
+    <mat-option value="gryffindor">Gryffindor</mat-option>
+    <mat-option value="ravenclaw">Ravenclaw</mat-option>
+    <mat-option value="hufflepuff">Hufflepuff</mat-option>
+  </mat-select>
+  <mat-error *ngIf="selected.hasError('required')">You must select a House</mat-error>
+  <mat-error *ngIf="selected.hasError('pattern') && !selected.hasError('required')">
+    Your selection is invalid
+  </mat-error>
+</mat-form-field>
+
+
+<table mat-table  [dataSource]="dataSource" matSort class="mat-elevation-z8">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> age </th>
+      <td mat-cell *matCellDef="let element"> {{CalculateAge(element.dateOfBirth)}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="patronus" >
+      <th mat-header-cell *matHeaderCellDef> patronus </th>
+      <td mat-cell *matCellDef="let element"> {{element.patronus}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef> image </th>
+      <td mat-cell *matCellDef="let element"><img src='{{element.image}}' width="200px"> </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
